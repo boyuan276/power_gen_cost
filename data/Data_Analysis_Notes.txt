@@ -1,0 +1,7 @@
+Data Analysis Notes
+1. Q_id: add up generation of all generators in each hour, using data from emission_2019xx.csv
+2. SO_id: add up generation of all generators except one facility, using data from emission_2019xx.csv
+3. DR, substract Q_id - SO_id
+4. QC, PC no data
+5. p: reference bus price (find hours that congestion and losses are small enough)
+6. SA: add up generation of a facility
