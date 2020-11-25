@@ -49,4 +49,6 @@ generation = readtable(filename, opts);
 % Replacing GrossLoad NaN with 0
 generation.GrossLoadMW(ismissing(generation.GrossLoadMW)) = 0;
 generation.HeatInputMMBtu(ismissing(generation.HeatInputMMBtu)) = 0;
+generation.DateTime = datetime(year(generation.Date),month(generation.Date),day(generation.Date),generation.Hour,0,0);
+generation.DateTime.Format = 'MM/dd/yyyy hh:mm:ss';
 end
