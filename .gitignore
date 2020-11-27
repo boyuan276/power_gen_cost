@@ -1,0 +1,11 @@
+# Ignore Mac system files
+.DS_store
+
+# Ignore reference folder
+reference
+
+# Ignore all text files
+*.txt
+
+# Ignore all pdf files
+.pdf
