@@ -48,4 +48,5 @@ priceISONE = readtable(filename, opts);
 priceISONE.DateTime = datetime(year(priceISONE.Date),month(priceISONE.Date),day(priceISONE.Date),priceISONE.HourEnding,0,0);
 priceISONE.DateTime.Format = 'MM/dd/yyyy hh:mm:ss';
 priceISONE = rmmissing(priceISONE);
+priceISONE = priceISONE(priceISONE.LocationType == "LOAD ZONE", :);
 end
