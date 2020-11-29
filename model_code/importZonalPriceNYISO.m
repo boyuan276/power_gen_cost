@@ -30,7 +30,7 @@ opts.DataLines = dataLines;
 opts.Delimiter = ",";
 
 % Specify column names and types
-opts.VariableNames = ["TimeStamp", "Name", "PTID", "LBMPMWHr", "MarginalCostLossesMWHr", "MarginalCostCongestionMWHr"];
+opts.VariableNames = ["DateTime", "Name", "PTID", "LBMPMWHr", "MarginalCostLossesMWHr", "MarginalCostCongestionMWHr"];
 opts.VariableTypes = ["datetime", "categorical", "categorical", "double", "double", "double"];
 
 % Specify file level properties
@@ -39,7 +39,7 @@ opts.EmptyLineRule = "read";
 
 % Specify variable properties
 opts = setvaropts(opts, ["Name", "PTID"], "EmptyFieldRule", "auto");
-opts = setvaropts(opts, "TimeStamp", "InputFormat", "MM/dd/yyyy HH:mm");
+opts = setvaropts(opts, "DateTime", "InputFormat", "MM/dd/yyyy HH:mm");
 
 % Import the data
 damlbmpzone = readtable(filename, opts);
