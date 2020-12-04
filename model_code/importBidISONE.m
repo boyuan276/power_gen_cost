@@ -48,6 +48,7 @@ opts = setvaropts(opts, ["Segment8Price", "Segment8MW", "Segment9Price", "Segmen
 % Import the data
 hourlyBid = readtable(filename, opts);
 hourlyBid = hourlyBid(~ismissing(hourlyBid.ParticipantID), :);
+hourlyBid.Hour = hourlyBid.Hour - 1;
 hourlyBid.DateTime = datetime(year(hourlyBid.Date),month(hourlyBid.Date),day(hourlyBid.Date),hourlyBid.Hour,0,0);
-hourlyBid.DateTime.Format = 'MM/dd/yyyy hh:mm:ss';
+hourlyBid.DateTime.Format = 'MM/dd/yyyy HH:mm:ss';
 end

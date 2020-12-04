@@ -46,7 +46,8 @@ opts = setvaropts(opts, "Date", "InputFormat", "MM/dd/yyyy");
 % Import the data
 hourlyDemand = readtable(filename, opts);
 hourlyDemand = hourlyDemand(~ismissing(hourlyDemand.Date), :);
+hourlyDemand.Hour = hourlyDemand.Hour - 1;
 hourlyDemand.DateTime = datetime(year(hourlyDemand.Date),month(hourlyDemand.Date),day(hourlyDemand.Date),hourlyDemand.Hour,0,0);
-hourlyDemand.DateTime.Format = 'MM/dd/yyyy hh:mm:ss';
+hourlyDemand.DateTime.Format = 'MM/dd/yyyy HH:mm:ss';
 
 end

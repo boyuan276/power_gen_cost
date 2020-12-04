@@ -30,8 +30,8 @@ opts.DataLines = dataLines;
 opts.Delimiter = ",";
 
 % Specify column names and types
-opts.VariableNames = ["Var1", "Date", "HourEnding", "LocationID", "LocationName", "LocationType", "LocationalMarginalPrice", "EnergyComponent", "CongestionComponent", "MarginalLossComponent"];
-opts.SelectedVariableNames = ["Date", "HourEnding", "LocationID", "LocationName", "LocationType", "LocationalMarginalPrice", "EnergyComponent", "CongestionComponent", "MarginalLossComponent"];
+opts.VariableNames = ["Var1", "Date", "Hour", "LocationID", "LocationName", "LocationType", "LocationalMarginalPrice", "EnergyComponent", "CongestionComponent", "MarginalLossComponent"];
+opts.SelectedVariableNames = ["Date", "Hour", "LocationID", "LocationName", "LocationType", "LocationalMarginalPrice", "EnergyComponent", "CongestionComponent", "MarginalLossComponent"];
 opts.VariableTypes = ["string", "datetime", "double", "categorical", "categorical", "categorical", "double", "double", "double", "double"];
 
 % Specify file level properties
@@ -45,8 +45,9 @@ opts = setvaropts(opts, "Date", "InputFormat", "MM/dd/yyyy");
 
 % Import the data
 priceISONE = readtable(filename, opts);
-priceISONE.DateTime = datetime(year(priceISONE.Date),month(priceISONE.Date),day(priceISONE.Date),priceISONE.HourEnding,0,0);
-priceISONE.DateTime.Format = 'MM/dd/yyyy hh:mm:ss';
+priceISONE.Hour = priceISONE.Hour - 1;
+priceISONE.DateTime = datetime(year(priceISONE.Date),month(priceISONE.Date),day(priceISONE.Date),priceISONE.Hour,0,0);
+priceISONE.DateTime.Format = 'MM/dd/yyyy HH:mm:ss';
 priceISONE = rmmissing(priceISONE);
 priceISONE = priceISONE(priceISONE.LocationType == "LOAD ZONE", :);
 end
