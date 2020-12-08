@@ -1,4 +1,4 @@
-function [cvx_y] = multiplot(data, para, num)
+function [cvx_y] = multiplot(data, para, num, kind)
 %MULTIPLOT Summary of this function goes here
 %   Detailed explanation goes here
 row = num/2;
@@ -11,9 +11,13 @@ for i = 1:num
     y = data{i,2};
     par = para(i,:);
     % modify this each time
-%     cvx_y{i} = par(1)*x.^2+par(2)*x+par(3);
-%     cvx_y{i} = par(1)*x+par(2);
-    cvx_y{i} = par(1)*x.^3+par(2)*x.^2+par(3)*x+par(4);
+    if kind == 2
+        cvx_y{i} = par(1)*x.^2+par(2)*x+par(3);
+    elseif kind == 1
+        cvx_y{i} = par(1)*x+par(2);
+    elseif kind == 3    
+        cvx_y{i} = par(1)*x.^3+par(2)*x.^2+par(3)*x+par(4);
+    end
     
     % plot
     subplot(row,col,i);
