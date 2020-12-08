@@ -1,9 +1,8 @@
 function [cvx_y] = multiplot(data, para, num, kind)
-%MULTIPLOT Summary of this function goes here
+%MULTIPLOT Calculate fitted data and plot them
 %   Detailed explanation goes here
-row = num/2;
-col = 2;
-fig = figure;
+plotColumn = 4;
+t = tiledlayout(numSelParts/plotColumn, plotColumn, "TileSpacing","compact");
 cvx_y = cell(8, 1);
 for i = 1:num
     % read original data
@@ -24,13 +23,9 @@ for i = 1:num
     plot(x, y,'.', x, cvx_y{i});
     
 end
-han=axes(fig,'visible','off'); 
-han.Title.Visible='on';
-han.XLabel.Visible='on';
-han.YLabel.Visible='on';
-ylabel(han,'"Marginal cost ($/MWh)"');
-xlabel(han,'Quantity (MWh)');
-title(han,'Marginal cost of top 20 market participants (CVX)');
+xlabel(t, "Quantity (MWh)");
+ylabel(t, "Marginal cost ($/MWh)");
+title(t, "Quadratic fit of marginal cost model of selected market participants");
 end
 
 
