@@ -13,7 +13,7 @@ We use ISONE hourly zonal price data in 2019. First, calculate the sum of conges
 
 **Related code**: hourlyZonalPriceISONE.mlx, importPriceISONE.m
 
-**Related data directory**: directory: 2019_LMP_ISONE
+**Related data directory**: 2019_LMP_ISONE
 
 **Related output**: selDateTimePriceISONE.mat
 
